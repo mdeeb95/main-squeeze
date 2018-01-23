@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
+
+.header-container {
+    width: 100%;
+    height: 50vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+}
+
+.header-bar {
+    width: 90%;
+    height: 15%;
+    background-color: #630000;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-family: 'Cinzel', serif;
+}
+
+.header-pic-container {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.antichrist-symbol {
+    width: 25%;
+    height: 100%;
+    background-image: url("https://img00.deviantart.net/38f5/i/2013/058/6/2/marilyn_manson__antichrist_superstar_demos_by_realkingbacon-d5wdl7a.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: opacity(0%);
+    animation: header-fade-in 0.5s forwards ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mechanical-symbol {
+    width: 25%;
+    height: 100%;
+    background-image: url('http://www.inquirelive.co.uk/wp-content/uploads/2015/10/marilyn-manson-best-albums-ever-mechanical-animals-review-music.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: opacity(0%);
+    animation: header-fade-in 0.5s 0.5s forwards ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.holywood-symbol {
+    width: 25%;
+    height: 100%;
+    background-image: url('https://lastfm-img2.akamaized.net/i/u/ar0/1b359f513f104835bfa213d56cee8fdd');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: opacity(0%);
+    animation: header-fade-in 0.5s 1s forwards ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.golden-symbol {
+    width: 25%;
+    height: 100%;
+    background-image: url('http://www.helnwein.com/images/raw/1217');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: opacity(0%);
+    animation: header-fade-in 0.5s 1.5s forwards ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    position: fixed;
+    top: 100px;
+    right: 100px;
+}
+
+@keyframes header-fade-in {
+    0% {filter: opacity(0%) grayscale(0%)}
+    100% {filter: opacity(25%) grayscale(100%)}
+}
