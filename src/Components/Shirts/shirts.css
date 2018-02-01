@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
 
 .home-container {
-    background-color: black;
+    background-color: white;
     width: 100%;
     height: 1100px;
     display: flex;
@@ -11,7 +11,7 @@
 }
 
 .vinyl-home-container {
-    background-color: black;
+    background-color: white;
     width: 100%;
     height: 550px;
     display: flex;
@@ -23,9 +23,14 @@
 .left-container {
     width: 20%;
     height: 100%;
-    background-color: #630000;
     border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
+    background-color: #521219;
+}
+
+.left-bar {
+    width: 10%;
+    height: 100%;
+    background: linear-gradient(to right, white, #521219);
 }
 
 .right-container {
@@ -40,7 +45,7 @@
 
 .vinyl-right-container {
     width: 60%;
-    height: 100%;
+    height: inherit;
     background-color: #e8e8e8;
     display: flex;
     justify-content: flex-start;
@@ -51,7 +56,7 @@
 .right-bar {
     width: 10%;
     height: 100%;
-    background: linear-gradient(to right,#E8E8E8, black)
+    background: linear-gradient(to right, #e8e8e8, white)
 }
 
 .item-1 {
@@ -106,24 +111,25 @@
     height: 500px;
     background-color: pink;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    flex-flow: column;
+    flex-flow: row;
 }
 
 .title-container-on {
     width: 100%;
     height: 20%;
-    background-color: red;
+    background-color: white;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.35s;
     filter: opacity(90%);
-    color: white;
+    color: black;
+    font-size: 20px;
 }
 
 .title-container-off {
@@ -131,10 +137,10 @@
     pointer-events: none;
     width: 100%;
     height: 0%;
-    background-color: red;
+    background-color: #521219;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     justify-content: center;
     align-items: center;
     font-size: 0;
@@ -146,10 +152,11 @@
 .price-container-on {
     width: 100%;
     height: 20%;
-    background-color: green;
+    background-color: #521219;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -164,10 +171,10 @@
     width: 100%;
     height: 0%;
     font-size: 0;
-    background-color: green;
+    background-color: black;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     justify-content: space-around;
     align-items: center;
     transition: all 0.35s;
@@ -185,16 +192,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 15px;
-    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     font-style: bold;
     cursor: pointer;
 }
 
 .check-out-box:hover {
-    transform: scale(1.2);
     transition: all 0.35s;
-    font-family: 'Lato', sans-serif;
+    background-color: white;
+    color: black;
 }
 
 .go-back-button-off {
@@ -202,7 +209,7 @@
     width: 8%;
     height: 6%;
     top: 118%;
-    left: 26%;
+    left: 30%;
     background-color: transparent;
     z-index: 1;
     display: none;
@@ -214,8 +221,7 @@
     border: 2px solid grey;
     color: grey;
     font-size: 20px;
-    font-family: 'Lato', sans-serif;
-    font-style: italic;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     cursor: pointer;
     transition: all 0.25s;
 }
@@ -225,18 +231,17 @@
     width: 8%;
     height: 6%;
     top: 118%;
-    left: 26%;
-    background-color: transparent;
+    left: 30%;
+    background-color: black;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 25px;
     border: 2px solid grey;
-    color: grey;
-    font-size: 20px;
-    font-family: 'Lato', sans-serif;
-    font-style: italic;
+    color: white;
+    font-size: 26px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     cursor: pointer;
     transition: all 0.25s;
     filter: opacity(0%);
@@ -322,17 +327,16 @@
 .chosen-header {
     width: 100%;
     height: 10%;
-    background-color: red;
+    background-color: #521219;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Lato', sans-serif;
-    font-size: 20px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 30px;
     text-align: center;
-    font-style: italic;
 }
 
 .chosen-buy-box-off {
@@ -367,7 +371,6 @@
     justify-content: center;
     align-items: center;
     flex-flow: column;
-    font-style: italic;
 }
 
 .chosen-price-container {
@@ -377,9 +380,9 @@
     justify-content: center;
     align-items: center;
     color: green;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     font-style: italic;
-    font-size: 20px;
+    font-size: 26px;
 }
 
 .chosen-buy-button {
@@ -390,9 +393,9 @@
     align-items: center;
     background-color: red;
     color: white;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     border-radius: 25px;
-    font-size: 20px;
+    font-size: 30px;
     transition: all 0.5s;
     cursor: pointer;
     -webkit-box-shadow: 10px 10px 26px -13px rgba(0,0,0,0.75);
@@ -401,80 +404,77 @@
 }
 
 .chosen-buy-button:hover {
-    transform: scale(1.05);
     transition: all 0.5s;
-    background-color: red;
+    background-color: white;
+    border: 1px solid #521219;
+    color: #521219;
 }
 
 .shirts-tab {
     width: 100%;
     height: 50px;
-    background-color: red;
-    border-top-left-radius: 25px;
-    font-family: 'Cinzel', serif;
+    background-color: white;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    border-bottom-left-radius: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 15px;
-    color: white;
-    font-style: italic;
+    color: #521219;
 }
 
 .shirts-tab-off {
     width: 100%;
     height: 50px;
-    background-color: black;
-    border-top-left-radius: 25px;
-    font-family: 'Cinzel', serif;
+    background-color: #521219;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 15px;
     color: white;
-    font-style: italic;
-    border-left: 1px red solid;
-    border-top: 1px red solid;
 }
 
 .shirts-tab-off:hover {
-    background-color: #E8E8E8;
-    color: black;
+    background-color: white;
+    color: #521219;
+    border-bottom-left-radius: 25px;
     transition: all 0.25s;
 }
 
 .vinyl-tab {
     width: 100%;
     height: 50px;
-    background-color: black;
-    font-family: 'Cinzel', serif;
+    background-color: #521219;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 15px;
     color: white;
-    font-style: italic;
-    border-left: 1px red solid;
     transition: all 0.25s;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 
 .vinyl-tab-on {
     width: 100%;
     height: 50px;
-    background-color: red;
-    font-family: 'Cinzel', serif;
+    background-color: white;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 15px;
-    color: white;
-    font-style: italic;
-    border-left: 1px red solid;
+    color: #521219;
     transition: all 0.25s;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 
 .vinyl-tab:hover {
-    background-color: #E8E8E8;
-    color: black;
+    background-color: white;
+    color: #521219;
     transition: all 0.25s;
 }
 
@@ -504,6 +504,132 @@
 .shopping-cart-on > img {
     width: 50%;
     height: 50%;
+}
+
+.delete-button {
+    position: relative;
+    width: 10%;
+    height: 70%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin-left: 5%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('https://d30y9cdsu7xlg0.cloudfront.net/png/3823-200.png');
+}
+
+.edit-button {
+    position: relative;
+    width: 10%;
+    height: 70%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin-left: 5%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('https://d30y9cdsu7xlg0.cloudfront.net/png/18800-200.png');
+}
+
+.new-item-box {
+    width: 30%;
+    height: 100%;
+    background-color: teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.edit-box {
+    width: 30%;
+    height: 100%;
+    background-color: teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.desc-input {
+    width: 300px;
+    height: 300px;
+}
+
+.shareOnFacebook {
+    width: 3%;
+    height: 5%;
+    position: fixed;
+    top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    left: 0%;
+    font-size: 20px;
+    background-color: #3B5998;
+    cursor: pointer;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 28px;
+}
+
+.shareOnTwitter {
+    width: 3%;
+    height: 5%;
+    position: fixed;
+    top: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    left: 0%;
+    font-size: 20px;
+    background-color: #3FCDFD;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.fb-icon {
+    width: 2.5%;
+    height: 4%;
+    background-image: url('http://www.freeiconspng.com/uploads/facebook-logo-png-white-facebook-logo-png-white-facebook-icon-png--32.png');
+    background-size: contain;
+    background-position: center;
+    position: fixed;
+    background-repeat: no-repeat;
+    top: 20.5%;
+    left: 0.05%;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+.tw-icon {
+    width: 2.5%;
+    height: 4%;
+    background-image: url('http://www.newdesignfile.com/postpic/2012/08/black-and-white-twitter-logo-icon_175533.png');
+    background-size: contain;
+    background-position: center;
+    position: fixed;
+    background-repeat: no-repeat;
+    top: 25.5%;
+    left: 0%;
+    background-color: transparent;
+    pointer-events: none;
 }
 
 @keyframes drop-out {

@@ -3,7 +3,7 @@ import axios from 'axios'
 import '../Shirts/shirts.css'
 import { Link } from 'react-router-dom'
 
-export default class Vinyl extends Component {
+export default class Posters extends Component {
 
     constructor(props) {
         super(props)
@@ -37,7 +37,7 @@ export default class Vinyl extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/api/vinyl')
+        axios.get('http://localhost:3001/api/posters')
             .then(response => {
                 this.setState({ items: response.data, itemAmount: response.data.length })
                 const size = this.state.itemAmount
@@ -160,7 +160,7 @@ export default class Vinyl extends Component {
         const link = this.state.link_input
         const specs = this.state.specs_input
 
-        axios.post("http://localhost:3001/api/vinyl/", {
+        axios.post("http://localhost:3001/api/posters/", {
             name,
             description,
             price,
@@ -175,7 +175,7 @@ export default class Vinyl extends Component {
 
     editSubmit(change_name, id, change_description, change_specs, change_price, change_picture, change_buy) {
 
-        axios.put(`http://localhost:3001/api/vinyl/`, {
+        axios.put(`http://localhost:3001/api/posters/`, {
             id,
             change_name,
             change_description,
@@ -254,7 +254,7 @@ export default class Vinyl extends Component {
         const result = window.confirm("Confirm delete?");
         if (result) {
             this.itemChosen = function () { }
-            axios.delete(`http://localhost:3001/api/vinyl/${id}`, {
+            axios.delete(`http://localhost:3001/api/posters/${id}`, {
                 id
             }
             )
@@ -294,7 +294,7 @@ export default class Vinyl extends Component {
                             </div>
                         </Link>
                         <Link to="/vinyl">
-                            <div className="vinyl-tab-on" id="vinyl-tab">
+                            <div className="vinyl-tab" id="vinyl-tab">
                                 <h1>Vinyl</h1>
                             </div>
                         </Link>
@@ -309,7 +309,7 @@ export default class Vinyl extends Component {
                             </div>
                         </Link>
                         <Link to="/posters">
-                            <div className="vinyl-tab" id="vinyl-tab">
+                            <div className="vinyl-tab-on" id="vinyl-tab">
                                 <h1>Posters</h1>
                             </div>
                         </Link>

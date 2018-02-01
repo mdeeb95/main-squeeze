@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './shirts.css'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default class Shirts extends Component {
 
@@ -55,6 +55,7 @@ export default class Shirts extends Component {
     specsInput(e) {
         this.setState({ specs_input: e }, () => console.log(this.state.specs_input))
     }
+
     submit() {
         const name = this.state.name_input
         const description = this.state.description_input
@@ -63,7 +64,7 @@ export default class Shirts extends Component {
         const link = this.state.link_input
         const specs = this.state.specs_input
 
-        axios.post("http://localhost:3001/api/items/", {
+        axios.post("http://localhost:3001/api/hoodies/", {
             name,
             description,
             price,
@@ -102,7 +103,7 @@ export default class Shirts extends Component {
         chosenItem.style = `background-image: url(${item_url})`
         chosenDescription.className = "chosen-description-on"
         chosenBuyBox.className = "chosen-buy-box-on"
-        this.setState({ chosen_name: item_name, chosen_description: item_description, chosen_price: item_price, chosen_link: item_link, chosen_specs: item_specs}, () => {
+        this.setState({ chosen_name: item_name, chosen_description: item_description, chosen_price: item_price, chosen_link: item_link, chosen_specs: item_specs }, () => {
             console.log(this.state)
         })
         goBackButton.className = "go-back-button-on"
@@ -142,26 +143,43 @@ export default class Shirts extends Component {
         return (
             <div>
                 <div className="home-container">
-                    <div className="left-container">
-                    <Link to="/shirts">
-                    <div className="shirts-tab" id="shirts-tab">
-                    <h1>Shirts</h1>
+                    <div className="left-bar">
                     </div>
-                    </Link>
-                    <Link to ="/vinyl">
-                    <div className="vinyl-tab" id="vinyl-tab">
-                    <h1>Vinyl</h1>
-                    </div>
-                    </Link>
+                    <div className="left-container" id="left-container">
+                        <Link to="/">
+                            <div className="shirts-tab" id="shirts-tab">
+                                <h1>Shirts</h1>
+                            </div>
+                        </Link>
+                        <Link to="/vinyl">
+                            <div className="vinyl-tab" id="vinyl-tab">
+                                <h1>Vinyl</h1>
+                            </div>
+                        </Link>
+                        <Link to="/socks">
+                            <div className="vinyl-tab" id="vinyl-tab">
+                                <h1>Socks</h1>
+                            </div>
+                        </Link>
+                        <Link to="/patches">
+                            <div className="vinyl-tab" id="vinyl-tab">
+                                <h1>Patches & Pins</h1>
+                            </div>
+                        </Link>
+                        <Link to="/posters">
+                            <div className="vinyl-tab" id="vinyl-tab">
+                                <h1>Posters</h1>
+                            </div>
+                        </Link>
                     </div>
                     <div className="right-container">
-                    <div className="go-back-button-off" id="go-back-button" onClick={() => this.goBack()}>
-                        <p>🡸Go back</p>
+                        <div className="go-back-button-off" id="go-back-button" onClick={() => this.goBack()}>
+                            <p>⇦ Go back</p>
                         </div>
                         <div className="chosen-item" id="chosen-item" onClick={() => this.buyClick()} onMouseEnter={() => this.cartOn()} onMouseLeave={() => this.cartOff()}>
-                        <div className="shopping-cart-off" id="shopping-cart" onClick={() => this.buyClick()}>
-                        <img src="http://www.freeiconspng.com/uploads/basket-cart-icon-27.png" />
-                        </div>
+                            <div className="shopping-cart-off" id="shopping-cart" onClick={() => this.buyClick()}>
+                                <img src="http://www.freeiconspng.com/uploads/basket-cart-icon-27.png" />
+                            </div>
                         </div>
                         <div className="chosen-description-off" id="chosen-description">
                             <div className="chosen-header">
@@ -171,12 +189,12 @@ export default class Shirts extends Component {
                             <p>{this.state.chosen_specs}</p>
                         </div>
                         <div className="chosen-buy-box-off" id="chosen-buy-box">
-                        <div className="chosen-price-container">
-                        <p>{this.state.chosen_price}</p>
-                        </div>
-                        <div className="chosen-buy-button" onClick={() => this.buyClick()}>
-                        <p>Buy Now</p>
-                        </div>
+                            <div className="chosen-price-container">
+                                <p>{this.state.chosen_price}</p>
+                            </div>
+                            <div className="chosen-buy-button" onClick={() => this.buyClick()}>
+                                <p>Buy Now</p>
+                            </div>
                         </div>
                         {this.state.items.map(item => {
                             console.log(item)
@@ -199,15 +217,15 @@ export default class Shirts extends Component {
                     <div className="right-bar">
                     </div>
                 </div>
-                <div className="editor-container">
+                {/* <div className="editor-container">
                     <input placeholder="name" onChange={(e) => this.nameInput(e.target.value)}></input>
-                    <input placeholder="description" onChange={(e) => this.descriptionInput(e.target.value)}></input>
-                    <input placeholder="item specs, ect." onChange={(e) => this.specsInput(e.target.value)}></input>
+                    <textarea rows="4" cols="50" onChange={(e) => this.descriptionInput(e.target.value)}></textarea>
+                    <textarea rows="4" cols="50" onChange={(e) => this.specsInput(e.target.value)}></textarea>
                     <input placeholder="price" onChange={(e) => this.priceInput(e.target.value)}></input>
                     <input placeholder="picture url" onChange={(e) => this.urlInput(e.target.value)}></input>
                     <input placeholder="buy link url" onChange={(e) => this.linkInput(e.target.value)}></input>
                     <button onClick={() => this.submit()}>Create new item</button>
-                </div>
+                </div> */}
             </div>
         )
     }

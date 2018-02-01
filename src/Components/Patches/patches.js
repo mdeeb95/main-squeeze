@@ -3,7 +3,7 @@ import axios from 'axios'
 import '../Shirts/shirts.css'
 import { Link } from 'react-router-dom'
 
-export default class Vinyl extends Component {
+export default class Patches extends Component {
 
     constructor(props) {
         super(props)
@@ -37,7 +37,8 @@ export default class Vinyl extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/api/vinyl')
+
+        axios.get('http://localhost:3001/api/patches')
             .then(response => {
                 this.setState({ items: response.data, itemAmount: response.data.length })
                 const size = this.state.itemAmount
@@ -160,7 +161,7 @@ export default class Vinyl extends Component {
         const link = this.state.link_input
         const specs = this.state.specs_input
 
-        axios.post("http://localhost:3001/api/vinyl/", {
+        axios.post("http://localhost:3001/api/patches", {
             name,
             description,
             price,
@@ -175,7 +176,7 @@ export default class Vinyl extends Component {
 
     editSubmit(change_name, id, change_description, change_specs, change_price, change_picture, change_buy) {
 
-        axios.put(`http://localhost:3001/api/vinyl/`, {
+        axios.put(`http://localhost:3001/api/patches/`, {
             id,
             change_name,
             change_description,
@@ -254,7 +255,7 @@ export default class Vinyl extends Component {
         const result = window.confirm("Confirm delete?");
         if (result) {
             this.itemChosen = function () { }
-            axios.delete(`http://localhost:3001/api/vinyl/${id}`, {
+            axios.delete(`http://localhost:3001/api/patches/${id}`, {
                 id
             }
             )
@@ -294,7 +295,7 @@ export default class Vinyl extends Component {
                             </div>
                         </Link>
                         <Link to="/vinyl">
-                            <div className="vinyl-tab-on" id="vinyl-tab">
+                            <div className="vinyl-tab" id="vinyl-tab">
                                 <h1>Vinyl</h1>
                             </div>
                         </Link>
@@ -304,7 +305,7 @@ export default class Vinyl extends Component {
                             </div>
                         </Link>
                         <Link to="/patches">
-                            <div className="vinyl-tab" id="vinyl-tab">
+                            <div className="vinyl-tab-on" id="vinyl-tab">
                                 <h1>Patches & Pins</h1>
                             </div>
                         </Link>
@@ -344,9 +345,9 @@ export default class Vinyl extends Component {
                                     onMouseOver={() => this.itemHover(item.id)} onMouseLeave={() => this.itemHoverOff(item.id)} onClick={() => this.itemChosen(item.item_url, item.item_name, item.item_description, item.price, item.link, item.specs)}>
                                     <div className="title-container-off" id={"title" + item.id}>
                                         <p>{item.item_name}</p>
-                                        {/* <div className="edit-button" id={item.id} onClick={() => this.edit(item.id, item.item_name, item.item_description, item.specs, item.price, item.item_url, item.link)}>
+                                        {/* <div name="edit-button" className="edit-button" id={item.id} onClick={() => this.edit(item.id, item.item_name, item.item_description, item.specs, item.price, item.item_url, item.link)}>
                                         </div>
-                                        <div className="delete-button" id={item.id} onClick={() => this.delete(item.id)}>
+                                        <div name="edit-button" className="delete-button" id={item.id} onClick={() => this.delete(item.id)}>
                                         </div> */}
                                     </div>
                                     <div className="price-container-off" id={"price" + item.id}>
@@ -376,8 +377,8 @@ export default class Vinyl extends Component {
                     <div className="edit-box">
                         <div>Edit Item</div>
                         <input id="edit-name-input" onChange={(e) => this.nameChange(e.target.value)}></input>
-                        <input id="edit-description-input" onChange={(e) => this.descriptionChange(e.target.value)}></input>
-                        <input id="edit-specs-input" onChange={(e) => this.specsChange(e.target.value)}></input>
+                        <textarea className="desc-input" rows="10" cols="50" id="edit-description-input" onChange={(e) => this.descriptionChange(e.target.value)}></textarea>
+                        <textarea className="desc-input" rows="1-" cols="50" id="edit-specs-input" onChange={(e) => this.specsChange(e.target.value)}></textarea>
                         <input id="edit-price-input" onChange={(e) => this.priceChange(e.target.value)}></input>
                         <input id="edit-picture-input" onChange={(e) => this.pictureChange(e.target.value)}></input>
                         <input id="edit-buy-input" onChange={(e) => this.buyChange(e.target.value)}></input>

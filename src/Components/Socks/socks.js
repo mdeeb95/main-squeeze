@@ -2,8 +2,16 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import '../Shirts/shirts.css'
 import { Link } from 'react-router-dom'
+import {Helmet} from "react-helmet";
 
-export default class Vinyl extends Component {
+import {
+    FacebookShareButton,
+    FacebookIcon,
+    TwitterShareButton,
+    TwitterIcon
+  } from 'react-share';
+
+export default class Socks extends Component {
 
     constructor(props) {
         super(props)
@@ -37,7 +45,7 @@ export default class Vinyl extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/api/vinyl')
+        axios.get('http://localhost:3001/api/jewelry')
             .then(response => {
                 this.setState({ items: response.data, itemAmount: response.data.length })
                 const size = this.state.itemAmount
@@ -49,15 +57,15 @@ export default class Vinyl extends Component {
                 console.log("yes", size)
 
                 if (size <= 3) {
-                    container.style = "height: 275px"
-                    menu.style = "height: 550px"
-                    leftBar.style = "height: 550px"
-                    home.style = "height: 550px"
+                    container.style = "height: 825px"
+                    menu.style = "height: 825px"
+                    leftBar.style = "height: 825px"
+                    home.style = "height: 825px"
                 } else if (size >= 4 && size <= 6) {
-                    container.style = "height: 550px"
-                    menu.style = "height: 550px"
-                    leftBar.style = "height: 550px"
-                    home.style = "height: 550px"
+                    container.style = "height: 825px"
+                    menu.style = "height: 825px"
+                    leftBar.style = "height: 825px"
+                    home.style = "height: 825px"
                 } else if (size >= 7 && size <= 9) {
                     container.style = "height: 825px"
                     menu.style = "height: 825px"
@@ -130,11 +138,11 @@ export default class Vinyl extends Component {
     }
 
     pictureChange(e) {
-        this.setState({ picture_change: e }, () => console.log(this.state.picture_change))
+        this.setState({ picture_change: e}, () => console.log(this.state.picture_change))
     }
 
     buyChange(e) {
-        this.setState({ buy_change: e })
+        this.setState({ buy_change: e})
     }
 
     descriptionInput(e) {
@@ -160,7 +168,7 @@ export default class Vinyl extends Component {
         const link = this.state.link_input
         const specs = this.state.specs_input
 
-        axios.post("http://localhost:3001/api/vinyl/", {
+        axios.post("http://localhost:3001/api/jewelry", {
             name,
             description,
             price,
@@ -175,7 +183,7 @@ export default class Vinyl extends Component {
 
     editSubmit(change_name, id, change_description, change_specs, change_price, change_picture, change_buy) {
 
-        axios.put(`http://localhost:3001/api/vinyl/`, {
+        axios.put(`http://localhost:3001/api/jewelry/`, {
             id,
             change_name,
             change_description,
@@ -254,7 +262,7 @@ export default class Vinyl extends Component {
         const result = window.confirm("Confirm delete?");
         if (result) {
             this.itemChosen = function () { }
-            axios.delete(`http://localhost:3001/api/vinyl/${id}`, {
+            axios.delete(`http://localhost:3001/api/jewelry/${id}`, {
                 id
             }
             )
@@ -266,24 +274,29 @@ export default class Vinyl extends Component {
     }
 
     edit(id, defaultName, defaultDescription, defaultSpecs, defaultPrice, defaultPicture, defaultBuy) {
-        this.setState({ edited_item_id: id })
+        this.setState({edited_item_id: id})
         document.getElementById('edit-name-input').value = defaultName
-        this.setState({ name_change: defaultName })
+        this.setState({name_change: defaultName})
         document.getElementById('edit-description-input').value = defaultDescription
-        this.setState({ description_change: defaultDescription })
+        this.setState({description_change: defaultDescription})
         document.getElementById('edit-specs-input').value = defaultSpecs
-        this.setState({ specs_change: defaultSpecs })
+        this.setState({specs_change: defaultSpecs})
         document.getElementById('edit-price-input').value = defaultPrice
-        this.setState({ price_change: defaultPrice })
+        this.setState({price_change: defaultPrice})
         document.getElementById('edit-picture-input').value = defaultPicture
-        this.setState({ picture_change: defaultPicture })
+        this.setState({picture_change: defaultPicture})
         document.getElementById('edit-buy-input').value = defaultBuy
-        this.setState({ buy_change: defaultBuy })
+        this.setState({buy_change: defaultBuy})
     }
 
     render() {
         return (
             <div>
+                <Helmet>
+                <meta charSet="utf-8" />
+                <title>My Title</title>
+                <link rel="canonical" href="http://vintagemmshop.com" />
+                </Helmet>
                 <div className="vinyl-home-container" id="home-container">
                     <div className="left-bar" id="left-bar">
                     </div>
@@ -294,12 +307,12 @@ export default class Vinyl extends Component {
                             </div>
                         </Link>
                         <Link to="/vinyl">
-                            <div className="vinyl-tab-on" id="vinyl-tab">
+                            <div className="vinyl-tab" id="vinyl-tab">
                                 <h1>Vinyl</h1>
                             </div>
                         </Link>
                         <Link to="/socks">
-                            <div className="vinyl-tab" id="vinyl-tab">
+                            <div className="vinyl-tab-on" id="vinyl-tab">
                                 <h1>Socks</h1>
                             </div>
                         </Link>
@@ -329,6 +342,12 @@ export default class Vinyl extends Component {
                             </div>
                             <p>{this.state.chosen_description}</p>
                             <p>{this.state.chosen_specs}</p>
+                        </div>
+                        <FacebookShareButton className="shareOnFacebook" url="www.vintagemmshop.com" quote="Vintage Marilyn Manson Shop"/>
+                        <div className="fb-icon">
+                        </div>
+                        <TwitterShareButton id="tw-share" className="shareOnTwitter" url="www.vintagemmshop.com" title="Vintage Marilyn Manson Socks" via="VintageMarilynManson" quote="Vintage Marilyn Manson Shop"/>
+                        <div className="tw-icon">
                         </div>
                         <div className="chosen-buy-box-off" id="chosen-buy-box">
                             <div className="chosen-price-container">
@@ -363,21 +382,21 @@ export default class Vinyl extends Component {
                     </div>
                 </div>
                 {/* <div className="editor-container">
-                    <div className="new-item-box">
-                        <div>Create New Item</div>
-                        <input placeholder="name" onChange={(e) => this.nameInput(e.target.value)}></input>
-                        <input placeholder="description" onChange={(e) => this.descriptionInput(e.target.value)}></input>
-                        <input placeholder="item specs, ect." onChange={(e) => this.specsInput(e.target.value)}></input>
-                        <input placeholder="price" onChange={(e) => this.priceInput(e.target.value)}></input>
-                        <input placeholder="picture url" onChange={(e) => this.urlInput(e.target.value)}></input>
-                        <input placeholder="buy link url" onChange={(e) => this.linkInput(e.target.value)}></input>
-                        <button id="create-item" onClick={() => this.submit()}>Create new item</button>
-                    </div>
+                <div className="new-item-box"> */}
+                {/* <div>Create New Item</div>
+                    <input placeholder="name" onChange={(e) => this.nameInput(e.target.value)}></input>
+                    <input placeholder="description" onChange={(e) => this.descriptionInput(e.target.value)}></input>
+                    <input placeholder="item specs, ect." onChange={(e) => this.specsInput(e.target.value)}></input>
+                    <input placeholder="price" onChange={(e) => this.priceInput(e.target.value)}></input>
+                    <input placeholder="picture url" onChange={(e) => this.urlInput(e.target.value)}></input>
+                    <input placeholder="buy link url" onChange={(e) => this.linkInput(e.target.value)}></input>
+                    <button id="create-item" onClick={() => this.submit()}>Create new item</button>
+                </div>
                     <div className="edit-box">
                         <div>Edit Item</div>
                         <input id="edit-name-input" onChange={(e) => this.nameChange(e.target.value)}></input>
-                        <input id="edit-description-input" onChange={(e) => this.descriptionChange(e.target.value)}></input>
-                        <input id="edit-specs-input" onChange={(e) => this.specsChange(e.target.value)}></input>
+                        <textarea className="desc-input" rows="10" cols="50" id="edit-description-input" onChange={(e) => this.descriptionChange(e.target.value)}></textarea>
+                        <textarea className="desc-input" rows="1-" cols="50" id="edit-specs-input" onChange={(e) => this.specsChange(e.target.value)}></textarea>
                         <input id="edit-price-input" onChange={(e) => this.priceChange(e.target.value)}></input>
                         <input id="edit-picture-input" onChange={(e) => this.pictureChange(e.target.value)}></input>
                         <input id="edit-buy-input" onChange={(e) => this.buyChange(e.target.value)}></input>
