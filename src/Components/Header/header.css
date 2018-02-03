@@ -323,3 +323,37 @@
     0% {opacity: 0}
     100% {opacity: 1}
 }
+
+@media screen and (max-width: 320px) {
+    .title-font {font-size: 35px; bottom: 60%;}
+    .itunes {width: 25%;}
+    .amazon {width: 25%;}
+    .spotify {width: 25%;}
+    .home-container {flex-flow: column;}
+    .header-font {font-size: 20px;};
+  }
+
+@media screen and (min-width: 320px) {
+  .title-font {font-size: 40px; bottom: 60%;}
+  .itunes {width: 25%;}
+  .amazon {width: 25%;}
+  .spotify {width: 25%;}
+  .home-container {flex-flow: column;}
+  .header-font {font-size: 20px;};
+}
+
+@media screen and (min-width: 425px) {
+  .title-font {font-size: 50px; bottom: 60%;};
+}
+
+@media screen and (min-width: 768px) {
+  .title-font {font-size: 75px}
+  .header-font {font-size: 30px;};
+}
+
+@media screen and (min-width: 1024px) {
+}
+
+@media screen and (min-width: 1440px) {
+  .title-font {font-size: 125px};
+}

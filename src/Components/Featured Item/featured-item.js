@@ -3,6 +3,8 @@ import axios from 'axios'
 import '../Shirts/shirts.css'
 import { Link } from 'react-router-dom'
 
+const shirts = require('../../Data/featured.js')
+
 export default class FeaturedItem extends Component {
 
     constructor(props) {
@@ -23,24 +25,30 @@ export default class FeaturedItem extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/api/featureditem1')
-            .then(response => {
-                this.setState({
-                    feat_items: response.data[0], feat_name: response.data[0].item_name,
-                    feat_desc: response.data[0].item_description, feat_specs: response.data[0].specs,
-                    feat_price: response.data[0].price, feat_link: response.data[0].link,
-                    feat_url: response.data[0].item_url})
-                }).then( () =>
-                    this.changePic(this.state.feat_url)
-                )}
+        this.setState({ feat_items: shirts}, () => {
+            console.log("items", shirts)
+            this.changePic()
+        }
+        )
 
-    changePic(pic) {
+        const container = document.getElementById('right-container')
+        const menu = document.getElementById('left-container')
+        const leftBar = document.getElementById('left-bar')
+        const home = document.getElementById('home-container')
+
+        container.style = "height: 825px;"
+        menu.style = "height: 825px"
+        leftBar.style = "height: 825px"
+        home.style = "height: 825px"
+    }
+
+    changePic() {
         const chosenItem = document.getElementById("chosen-item")
-        chosenItem.style = `background-image: url(${pic})`
+        chosenItem.style = `background-image: url(${shirts.data[0][3]})`
     }
 
     buyClick() {
-        window.location = this.state.feat_link
+        window.location = shirts.data[0][5]
     }
 
     cartOn() {
@@ -99,14 +107,14 @@ export default class FeaturedItem extends Component {
                         </div>
                         <div className="chosen-description-on" id="chosen-description">
                             <div className="chosen-header">
-                                {this.state.feat_name}
+                                {shirts.data[0][1]}
                             </div>
-                            <p>{this.state.feat_desc}</p>
-                            <p>{this.state.feat_specs}</p>
+                            <p>{shirts.data[0][2]}</p>
+                            <p>{shirts.data[0][6]}</p>
                         </div>
                         <div className="chosen-buy-box-on" id="chosen-buy-box">
                             <div className="chosen-price-container">
-                                <p>{this.state.feat_price}</p>
+                                <p>{shirts.data[0][4]}</p>
                             </div>
                             <div className="chosen-buy-button" onClick={() => this.buyClick()}>
                                 <p>Buy Now</p>

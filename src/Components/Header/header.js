@@ -3,6 +3,9 @@ import './header.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+const shirts = require('../../Data/featured.js')
+const socials = require('../../Data/socials.js')
+
 export default class Header extends Component {
 
     constructor(props) {
@@ -23,35 +26,22 @@ export default class Header extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/api/featureditem1')
-            .then(response => {
-                this.setState({
-                    feat_items: response.data[0]
-                }, () => this.setState({feat_title_1: response.data[0].item_name,
-                feat_pic_1: response.data[0].item_url, feat_title_2: response.data[1].item_name,
-                feat_pic_2: response.data[1].item_url, feat_title_3: response.data[2].item_name,
-                feat_pic_3: response.data[2].item_url
-            }))
-            }
-            ).then(
-                () => {
-                this.changePic(this.state.feat_pic_1, this.state.feat_pic_2, this.state.feat_pic_3)
-                }
-            )
-        axios.get('http://localhost:3001/api/socials')
-            .then(response => {
-                this.setState({facebook: response.data[0].facebook, twitter: response.data[0].twitter,
-                tumblr: response.data[0].tumblr, instagram: response.data[0].instagram})
-            })
+        this.setState({
+            feat_title_1: shirts.data[0][1], feat_title_2: shirts.data[1][1], feat_title_3: shirts.data[2][1]})
+        this.changePic()
+        this.setState({
+            facebook: socials.data[0][1], twitter: socials.data[0][2],
+            tumblr: socials.data[0][3], instagram: socials.data[0][4]
+        })
     }
 
-    changePic(pic1, pic2, pic3) {
+    changePic() {
         const featPic1 = document.getElementById('feat-pic-1')
         const featPic2 = document.getElementById('feat-pic-2')
         const featPic3 = document.getElementById('feat-pic-3')
-        featPic1.style = `background-image: url(${pic1})`
-        featPic2.style = `background-image: url(${pic2})`
-        featPic3.style = `background-image: url(${pic3})`
+        featPic1.style = `background-image: url(${shirts.data[0][3]})`
+        featPic2.style = `background-image: url(${shirts.data[1][3]})`
+        featPic3.style = `background-image: url(${shirts.data[2][3]})`
     }
 
     facebook(link) {
@@ -75,8 +65,28 @@ export default class Header extends Component {
         featItem1.style = "text-decoration: underline"
     }
 
+    hoverItem2() {
+        const featItem1 = document.getElementById('feat-title-2')
+        featItem1.style = "text-decoration: underline"
+    }
+
+    hoverItem3() {
+        const featItem1 = document.getElementById('feat-title-3')
+        featItem1.style = "text-decoration: underline"
+    }
+
     leaveItem1() {
         const featItem1 = document.getElementById('feat-title-1')
+        featItem1.style = "text-decoration: none"
+    }
+
+    leaveItem2() {
+        const featItem1 = document.getElementById('feat-title-2')
+        featItem1.style = "text-decoration: none"
+    }
+
+    leaveItem3() {
+        const featItem1 = document.getElementById('feat-title-3')
         featItem1.style = "text-decoration: none"
     }
 
@@ -92,7 +102,7 @@ export default class Header extends Component {
                         <div className="header-left-container">
                             <div className="social-bar">
                                 <div className="facebook-icon" id="facebook" onClick={() => this.facebook(this.state.facebook)} />
-                                <div className="twitter-icon" id="twitter" onClick={() => this.twitter(this.state.twitter)}/>
+                                <div className="twitter-icon" id="twitter" onClick={() => this.twitter(this.state.twitter)} />
                                 <div className="tumblr-icon" id="tumblr" onClick={() => this.tumblr(this.state.tumblr)} />
                                 <div className="instagram-icon" id="instagram" onClick={() => this.instagram(this.state.instagram)} />
                             </div>
@@ -113,16 +123,16 @@ export default class Header extends Component {
                                         </div>
                                     </Link>
                                 </div>
-                                <div className="featured-item-2" onMouseEnter={() => this.hoverItem1()} onMouseLeave={() => this.leaveItem1()}>
+                                <div className="featured-item-2" onMouseEnter={() => this.hoverItem2()} onMouseLeave={() => this.leaveItem2()}>
                                     <Link to="/featured-item-2">
                                         <div className="featured-item-2-text" id="feat-title-2">
-                                        <div>{this.state.feat_title_2}</div>
+                                            <div>{this.state.feat_title_2}</div>
                                         </div>
                                         <div className="featured-item-2-pic" id="feat-pic-2">
                                         </div>
                                     </Link>
                                 </div>
-                                <div className="featured-item-3" onMouseEnter={() => this.hoverItem1()} onMouseLeave={() => this.leaveItem1()}>
+                                <div className="featured-item-3" onMouseEnter={() => this.hoverItem3()} onMouseLeave={() => this.leaveItem3()}>
                                     <Link to="/featured-item-3">
                                         <div className="featured-item-3-pic" id="feat-pic-3">
                                         </div>

@@ -3,6 +3,8 @@ import axios from 'axios'
 import '../Shirts/shirts.css'
 import { Link } from 'react-router-dom'
 
+const shirts = require('../../Data/featured.js')
+
 export default class FeaturedItem3 extends Component {
 
     constructor(props) {
@@ -14,77 +16,39 @@ export default class FeaturedItem3 extends Component {
             feat_specs: '',
             feat_price: '',
             feat_link: '',
-            feat_url: '',
-            name_change: '',
-            description_change: '',
-            specs_change: '',
-            price_change: '',
-            picture_change: '',
-            buy_change: '',
-            edited_item_id: ''
+            feat_url: ''
         }
+    }
+
+    featDesc() {
+
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/api/featureditem1')
-            .then(response => {
-                this.setState({
-                    feat_items: response.data[2], feat_name: response.data[2].item_name,
-                    feat_desc: response.data[2].item_description, feat_specs: response.data[2].specs,
-                    feat_price: response.data[2].price, feat_link: response.data[2].link,
-                    feat_url: response.data[2].item_url, edited_item_id: response.data[2].id})
-                }).then( () =>
-                    this.changePic(this.state.feat_url)
-                )}
-
-                
-    nameChange(e) {
-        this.setState({ name_change: e }, () => console.log(this.state.name_change))
-    }
-
-    descriptionChange(e) {
-        this.setState({ description_change: e }, () => console.log(this.state.description_change))
-    }
-
-    specsChange(e) {
-        this.setState({ specs_change: e }, () => console.log(this.state.specs_change))
-    }
-
-    priceChange(e) {
-        this.setState({ price_change: e }, () => console.log(this.state.price_change))
-    }
-
-    pictureChange(e) {
-        this.setState({ picture_change: e}, () => console.log(this.state.picture_change))
-    }
-
-    buyChange(e) {
-        this.setState({ buy_change: e})
-    }
-
-    editSubmit(change_name, id, change_description, change_specs, change_price, change_picture, change_buy) {
-
-        axios.put(`http://localhost:3001/api/featureditem1/`, {
-            id,
-            change_name,
-            change_description,
-            change_specs,
-            change_price,
-            change_picture,
-            change_buy
+        this.setState({ feat_items: shirts}, () => {
+            console.log("items", shirts)
+            this.changePic()
         }
         )
-        alert("Item changed. Refreshing now!")
-        window.location.reload()
+
+        const container = document.getElementById('right-container')
+        const menu = document.getElementById('left-container')
+        const leftBar = document.getElementById('left-bar')
+        const home = document.getElementById('home-container')
+
+        container.style = "height: 825px;"
+        menu.style = "height: 825px"
+        leftBar.style = "height: 825px"
+        home.style = "height: 825px"
     }
 
-    changePic(pic) {
+    changePic() {
         const chosenItem = document.getElementById("chosen-item")
-        chosenItem.style = `background-image: url(${pic})`
+        chosenItem.style = `background-image: url(${shirts.data[2][3]})`
     }
 
     buyClick() {
-        window.location = this.state.feat_link
+        window.location = shirts.data[2][5]
     }
 
     cartOn() {
@@ -143,14 +107,14 @@ export default class FeaturedItem3 extends Component {
                         </div>
                         <div className="chosen-description-on" id="chosen-description">
                             <div className="chosen-header">
-                                {this.state.feat_name}
+                                {shirts.data[2][1]}
                             </div>
-                            <p>{this.state.feat_desc}</p>
-                            <p>{this.state.feat_specs}</p>
+                            <p>{shirts.data[2][2]}</p>
+                            <p>{shirts.data[2][6]}</p>
                         </div>
                         <div className="chosen-buy-box-on" id="chosen-buy-box">
                             <div className="chosen-price-container">
-                                <p>{this.state.feat_price}</p>
+                                <p>{shirts.data[2][4]}</p>
                             </div>
                             <div className="chosen-buy-button" onClick={() => this.buyClick()}>
                                 <p>Buy Now</p>
@@ -162,15 +126,14 @@ export default class FeaturedItem3 extends Component {
                     </div>
                 </div>
                 <div className="editor-container">
-                <div className="edit box">
-                <input id="edit-name-input" placeholder="name" onChange={(e) => this.nameChange(e.target.value)}></input>
-                        <input id="edit-description-input" placeholder="description" onChange={(e) => this.descriptionChange(e.target.value)}></input>
-                        <input id="edit-specs-input" placeholder="specs" onChange={(e) => this.specsChange(e.target.value)}></input>
-                        <input id="edit-price-input" placeholder="price" onChange={(e) => this.priceChange(e.target.value)}></input>
-                        <input id="edit-picture-input" placeholder="image_url" onChange={(e) => this.pictureChange(e.target.value)}></input>
-                        <input id="edit-buy-input" placeholder="buy-link" onChange={(e) => this.buyChange(e.target.value)}></input>
-                        <button id="edit-item" onClick={() => this.editSubmit(this.state.name_change, this.state.edited_item_id, this.state.description_change, this.state.specs_change, this.state.price_change, this.state.picture_change, this.state.buy_change)}>Create new item</button>
-                </div>
+                <input placeholder="name" onChange={(e) => this.nameInput(e.target.value)}></input>
+                    <input placeholder="name" onChange={(e) => this.nameInput(e.target.value)}></input>
+                    <textarea rows="4" cols="50" onChange={(e) => this.descriptionInput(e.target.value)}></textarea>
+                    <textarea rows="4" cols="50" onChange={(e) => this.specsInput(e.target.value)}></textarea>
+                    <input placeholder="price" onChange={(e) => this.priceInput(e.target.value)}></input>
+                    <input placeholder="picture url" onChange={(e) => this.urlInput(e.target.value)}></input>
+                    <input placeholder="buy link url" onChange={(e) => this.linkInput(e.target.value)}></input>
+                    <button onClick={() => this.submit()}>Create new item</button>
                 </div>
             </div>
         )
