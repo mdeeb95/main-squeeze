@@ -95,11 +95,6 @@ export default class FeaturedItem2 extends Component {
                         </Link>
                     </div>
                     <div className="vinyl-right-container" id="right-container">
-                        <Link to="/">
-                            <div className="go-back-button-on" id="go-back-button">
-                                <p>⇦ Go back</p>
-                            </div>
-                        </Link>
                         <div className="chosen-item-on" id="chosen-item" onClick={() => this.buyClick()} onMouseEnter={() => this.cartOn()} onMouseLeave={() => this.cartOff()}>
                             <div className="shopping-cart-off" id="shopping-cart" onClick={() => this.buyClick()}>
                                 <img src="http://www.freeiconspng.com/uploads/basket-cart-icon-27.png" />
@@ -125,7 +120,7 @@ export default class FeaturedItem2 extends Component {
                     <div className="right-bar">
                     </div>
                 </div>
-                <div className="editor-container">
+                {/* <div className="editor-container">
                 <input placeholder="name" onChange={(e) => this.nameInput(e.target.value)}></input>
                     <input placeholder="name" onChange={(e) => this.nameInput(e.target.value)}></input>
                     <textarea rows="4" cols="50" onChange={(e) => this.descriptionInput(e.target.value)}></textarea>
@@ -134,7 +129,7 @@ export default class FeaturedItem2 extends Component {
                     <input placeholder="picture url" onChange={(e) => this.urlInput(e.target.value)}></input>
                     <input placeholder="buy link url" onChange={(e) => this.linkInput(e.target.value)}></input>
                     <button onClick={() => this.submit()}>Create new item</button>
-                </div>
+                </div> */}
             </div>
         )
     }
