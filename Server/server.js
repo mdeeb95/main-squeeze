@@ -46,5 +46,5 @@ app.post('/api/posters', controller.addPosters)
 app.put('/api/posters', controller.editPosters)
 app.delete('/api/posters/:id', controller.deletePosters)
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 80
 app.listen( port , () => { console.log(`Server listening on port ${port}`); } );
