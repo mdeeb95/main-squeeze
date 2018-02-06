@@ -706,6 +706,7 @@
     .chosen-header {font-size: 20px;}
     .chosen-buy-button {width: 150%; height: 25%; position: absolute; top: 70%; left: 10%;}
     .go-back-button-on {width: 40%; height: 5%; position: absolute; top: 129%; left: 41%;}
+    .go-back-button-2-on {font-size: 16px; width: 25%; height: 5%;}
     .chosen-price-container {left: 60%; top: 43%; position: absolute;};
 }
 
@@ -723,6 +724,7 @@
     .chosen-header {font-size: 20px;}
     .chosen-buy-button {width: 150%; height: 25%; position: absolute; top: 70%; left: 10%;}
     .go-back-button-on {width: 40%; height: 5%; position: absolute; top: 129%; left: 41%;}
+    .go-back-button-2-on {font-size: 16px; width: 20%; height: 5%;}
     .chosen-price-container {left: 60%; top: 43%; position: absolute;};
 }
 
@@ -740,17 +742,20 @@
     .chosen-header {font-size: 25px;}
     .chosen-buy-button {width: 150%; height: 25%; position: absolute; top: 70%; left: 10%;}
     .go-back-button-on {width: 40%; height: 5%; position: absolute; top: 129%; left: 41%;}
+    .go-back-button-2-on {font-size: 16px; width: 20%; height: 5%;}
     .chosen-price-container {left: 60%; top: 43%; position: absolute;};
 }
 
 @media screen and (min-width: 768px) {
     .chosen-description-on {width: 30%;}
     .go-back-button-on {font-size: 20px; text-align: center;}
+    .go-back-button-2-on {font-size: 14px;}
     .chosen-header {font-size: 25px;};
 }
 
 @media screen and (min-width: 1024px) {
     .chosen-description-on {width: 25%;}
+    .go-back-button-2-on {font-size: 20px;}
     .go-back-button-on {font-size: 20px; text-align: center;}
 }
 
@@ -761,6 +766,7 @@
     .vinyl-tab-on {font-size: 20px; text-align: center;}
     .chosen-buy-button {font-size: 50px;}
     .go-back-button-on {font-size: 40px;}
+    .go-back-button-2-on {font-size: 30px;}
     .chosen-header {font-size: 40px;}
     .chosen-description-on {font-size: 20px;};
 }
